@@ -1,0 +1,108 @@
+NovaCorp New Hire Onboarding Checklist
+Document ID: NC-HR-CHK-002
+Version: 4.1
+Effective Date: 2025-04-01
+Owner: People Operations & IT Service Management
+Classification: Internal Use Only
+
+Purpose
+This checklist defines the required onboarding activities for all new
+NovaCorp employees and long-term contractors. It ensures consistent
+provisioning of access, equipment, and training in accordance with
+NC-SEC-POL-014 (Cloud Storage Access Policy), NC-HR-POL-009 (Acceptable Use
+Policy), and applicable regulatory requirements.
+
+Scope
+Applies to all full-time employees, part-time employees, and contractors
+with engagements exceeding 30 days. Short-term vendor access follows
+NC-SEC-PROC-011 (Third-Party Access Procedure).
+
+Timeline
+   Pre-Day-1:   Items 1-4
+   Day 1:       Items 5-9
+   Week 1:      Items 10-14
+   Week 2-4:    Items 15-19
+   Day 90:      Items 20-21
+
+Owners
+   PO  = People Operations
+   IT  = IT Service Desk
+   SEC = Information Security
+   MGR = Hiring Manager
+
+----------------------------------------------------------------------
+Pre-Day-1 (Owner in brackets)
+
+1. [PO]  Verify signed offer letter, NDA, and IP assignment agreement on
+         file in Workday before equipment is shipped.
+2. [PO]  Complete I-9 / right-to-work verification per jurisdiction.
+3. [IT]  Provision corporate laptop with the standard MDM profile (Jamf
+         for macOS, Intune for Windows). Disk encryption enforced at first
+         boot.
+4. [IT]  Create identity in Okta. Assign to default group `grp-all-staff`
+         and any role-based groups specified in the hiring requisition.
+
+----------------------------------------------------------------------
+Day 1
+
+5. [PO]  Conduct welcome session and review the Employee Handbook
+         (NC-HR-DOC-001), Code of Conduct, and Acceptable Use Policy.
+6. [SEC] Deliver mandatory Security Awareness Training Module 1
+         (phishing, credential hygiene, data classification). Completion
+         required before any production system access is granted.
+7. [IT]  Enroll new hire in Okta MFA (FIDO2 hardware key issued; mobile
+         authenticator as backup factor only).
+8. [IT]  Provision SSO access to baseline tooling: Email (Google
+         Workspace), Slack, Zoom, Confluence, Jira, 1Password.
+9. [MGR] Schedule 1:1 introductions with team members and a 30-day goal
+         setting meeting.
+
+----------------------------------------------------------------------
+Week 1
+
+10. [MGR] Submit role-based access request in ServiceNow specifying:
+          required SaaS applications, source code repositories, and cloud
+          IAM roles. All requests follow least-privilege principles.
+11. [SEC] Approve or deny access requests within 2 business days; flag
+          requests for Confidential or Restricted-tier resources for
+          additional review per NC-SEC-POL-014 Section 4.
+12. [IT]  Provision GitHub Enterprise access; enforce signed commits and
+          branch protection on assigned repositories.
+13. [PO]  Confirm enrollment in payroll, benefits, and 401(k) via Workday.
+14. [MGR] Assign onboarding buddy and share the team-specific runbook
+          stored in Confluence.
+
+----------------------------------------------------------------------
+Week 2 - 4
+
+15. [SEC] Deliver Security Awareness Training Module 2 (data handling,
+          incident reporting, AI tool usage guidelines).
+16. [SEC] For engineering hires: complete Secure Coding Training and
+          NC-SEC-POL-021 (Secrets Management Policy) acknowledgment.
+17. [SEC] For employees handling Confidential or Restricted data:
+          complete role-specific privacy training (GDPR, CCPA, HIPAA as
+          applicable) and sign the Data Handling Attestation.
+18. [MGR] Validate that the new hire has completed all assigned training
+          and has functional access to required systems. Submit access
+          gap report to IT if any blockers remain.
+19. [PO]  Conduct 30-day check-in covering role clarity, team
+          integration, and outstanding onboarding items.
+
+----------------------------------------------------------------------
+Day 90
+
+20. [SEC] Conduct first quarterly access review for the new hire.
+          Revoke any unused entitlements per NC-SEC-PROC-005.
+21. [PO]  Conduct 90-day performance and engagement check-in. Confirm
+          completion of all probationary requirements.
+
+----------------------------------------------------------------------
+Sign-off
+
+New Hire:        ___________________________   Date: __________
+Hiring Manager:  ___________________________   Date: __________
+HR Partner:      ___________________________   Date: __________
+
+Failure to complete required security training within the specified
+timeline will result in automatic suspension of system access until
+remediation, per NC-SEC-POL-014 Section 10.

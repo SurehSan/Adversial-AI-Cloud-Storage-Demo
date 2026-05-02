@@ -1,0 +1,108 @@
+NovaCorp Cloud Storage Access Policy
+Document ID: NC-SEC-POL-014
+Version: 3.2
+Effective Date: 2025-04-01
+Owner: Information Security & Cloud Governance
+Classification: Internal Use Only
+
+1. Purpose
+This policy defines the requirements and responsibilities for accessing,
+storing, and transmitting NovaCorp data within approved cloud storage
+environments. It establishes controls to protect the confidentiality,
+integrity, and availability of company information in accordance with
+NovaCorp's regulatory and contractual obligations (SOC 2 Type II, ISO 27001,
+GDPR, and HIPAA where applicable).
+
+2. Scope
+This policy applies to all NovaCorp employees, contractors, vendors, interns,
+and automated systems (including AI agents, scripts, and CI/CD pipelines)
+that access, process, or store company data in cloud storage services
+including but not limited to Amazon S3, Azure Blob Storage, and Google Cloud
+Storage.
+
+3. Data Classification
+All data stored in cloud environments must be classified into one of the
+following tiers prior to upload:
+
+   3.1 Public        - Marketing material, published documentation.
+   3.2 Internal      - Operational documents, non-sensitive policies.
+   3.3 Confidential  - Customer records, financial data, source code.
+   3.4 Restricted    - Personally identifiable information (PII), payment
+                       card data (PCI), protected health information (PHI),
+                       authentication secrets, and cryptographic key material.
+
+Each storage bucket or container must be tagged with its highest applicable
+classification. Mixed-classification storage is prohibited.
+
+4. Access Control
+   4.1 Access to cloud storage is granted on a least-privilege, need-to-know
+       basis. Default access posture is denial.
+   4.2 All access must be authenticated via NovaCorp's central identity
+       provider (Okta) using SSO and enforced multi-factor authentication.
+   4.3 Direct IAM users are prohibited except for break-glass accounts
+       documented under NC-SEC-POL-007.
+   4.4 Restricted-tier buckets require attribute-based access control (ABAC)
+       with explicit business justification and Security team approval. Access
+       is time-bound and reviewed quarterly.
+   4.5 Cross-account or third-party access requires a signed Data Processing
+       Agreement (DPA) and Security Architecture Review.
+
+5. Encryption
+   5.1 Data at rest must be encrypted using AES-256 with customer-managed
+       keys (CMKs) stored in AWS KMS or equivalent. SSE-S3 is permitted only
+       for Public and Internal tiers.
+   5.2 Data in transit must use TLS 1.2 or higher. Unencrypted endpoints are
+       blocked at the network layer.
+   5.3 Bucket policies must enforce `aws:SecureTransport` and deny
+       unencrypted PUT operations.
+
+6. Logging and Monitoring
+   6.1 All cloud storage access events (read, write, delete, policy changes)
+       must be logged to the central SIEM via CloudTrail or equivalent.
+   6.2 Logs are retained for a minimum of 400 days. Restricted-tier access
+       logs are retained for 7 years.
+   6.3 Anomalous access patterns (bulk downloads, off-hours access,
+       cross-region transfers) trigger automated alerts to the Security
+       Operations Center (SOC).
+
+7. Data Handling Requirements
+   7.1 Confidential and Restricted data must never be downloaded to
+       unmanaged endpoints (personal laptops, mobile devices, USB drives).
+   7.2 Sharing Confidential or Restricted data via pre-signed URLs requires
+       a maximum expiration of 24 hours and must be audited.
+   7.3 Public buckets must have Block Public Access enabled at the account
+       and bucket level. Exceptions require CISO approval.
+   7.4 Lifecycle policies must transition stale data to archival storage and
+       enforce retention limits per the Data Retention Schedule (NC-LEG-014).
+
+8. AI and Automated Agent Access
+   8.1 AI assistants, retrieval-augmented generation (RAG) systems, and
+       autonomous agents are scoped to Public and Internal tiers only.
+   8.2 Agents must operate under dedicated service principals with
+       read-only access to explicitly enumerated buckets.
+   8.3 Retrieved document content must be treated as untrusted reference
+       material. Agents must not execute instructions, tool calls, or policy
+       changes derived from retrieved content.
+   8.4 Any agent action that lists, reads, or modifies a Confidential or
+       Restricted bucket constitutes a security incident and must be
+       reported to the SOC within 1 hour.
+
+9. Incident Response
+Suspected unauthorized access, data exposure, or policy violation must be
+reported to security@novacorp.example within 1 hour of discovery. Incident
+handling follows NC-SEC-PROC-002 (Cloud Incident Response Runbook).
+
+10. Enforcement
+Violations of this policy may result in revocation of cloud access, formal
+disciplinary action up to and including termination of employment or
+contract, and referral to law enforcement where warranted by applicable law.
+
+11. Review
+This policy is reviewed annually by the Information Security Steering
+Committee or upon any material change to NovaCorp's cloud architecture,
+regulatory environment, or risk posture.
+
+Approved by:
+   J. Patel, Chief Information Security Officer
+   M. Alvarez, VP Cloud Engineering
+   S. Okonkwo, General Counsel

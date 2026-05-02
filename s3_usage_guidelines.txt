@@ -1,0 +1,160 @@
+NovaCorp Amazon S3 Usage Guidelines
+Document ID: NC-CLD-GDL-007
+Version: 2.5
+Effective Date: 2025-04-01
+Owner: Cloud Platform Engineering
+Classification: Internal Use Only
+
+Purpose
+This document provides operational guidelines for the provisioning,
+configuration, and day-to-day use of Amazon S3 within NovaCorp AWS
+accounts. It complements NC-SEC-POL-014 (Cloud Storage Access Policy) and
+must be read in conjunction with it. Where this guideline conflicts with
+NC-SEC-POL-014, the policy takes precedence.
+
+Scope
+Applies to all Amazon S3 buckets created in any NovaCorp-owned or managed
+AWS account, including production, staging, development, sandbox, and
+data-science environments.
+
+----------------------------------------------------------------------
+1. Bucket Naming and Tagging
+
+   1.1 Bucket names must follow the pattern:
+          nc-<env>-<bu>-<purpose>[-<region>]
+       where:
+          <env>     = prod | stg | dev | sbx
+          <bu>      = business unit code (eng, fin, hr, mkt, sec, data)
+          <purpose> = lowercase descriptor, hyphen-separated
+          <region>  = optional region suffix for multi-region deployments
+       Example: nc-prod-fin-invoices-archive
+
+   1.2 The following tags are mandatory at bucket creation. Buckets
+       missing any required tag will be flagged by the nightly compliance
+       scanner and subject to automatic restriction within 72 hours:
+          Owner          = email of the responsible engineering team
+          CostCenter     = chargeback code
+          Classification = public | internal | confidential | restricted
+          DataRetention  = retention period (e.g., 30d, 1y, 7y, indefinite)
+          Environment    = prod | stg | dev | sbx
+          ManagedBy      = terraform | cloudformation | manual
+
+   1.3 Manually created buckets (`ManagedBy=manual`) are permitted only in
+       sandbox environments and must be deleted within 30 days.
+
+----------------------------------------------------------------------
+2. Default Configuration Standards
+
+   2.1 Block Public Access must be enabled at the account level and
+       inherited by all buckets. Per-bucket exceptions require CISO
+       approval and are tracked in NC-SEC-REG-003.
+   2.2 Object Ownership must be set to "Bucket owner enforced" (ACLs
+       disabled). Legacy ACL-based access patterns are deprecated.
+   2.3 Versioning must be enabled for any bucket storing Confidential or
+       Restricted data, or any bucket with `DataRetention > 30d`.
+   2.4 MFA Delete must be enabled on Restricted-tier buckets.
+   2.5 Server-side encryption defaults:
+          Public / Internal:        SSE-S3 with bucket key
+          Confidential / Restricted: SSE-KMS with a customer-managed key
+   2.6 Lifecycle rules must transition objects per the Data Retention
+       Schedule (NC-LEG-014). At minimum, incomplete multipart uploads
+       must be aborted after 7 days.
+
+----------------------------------------------------------------------
+3. Access Patterns
+
+   3.1 Application access must use IAM roles assumed via instance
+       profiles, IRSA (for EKS), or OIDC (for CI/CD). Static IAM access
+       keys are prohibited in application code.
+   3.2 Bucket policies must include an explicit deny for requests that
+       do not satisfy `aws:SecureTransport=true`.
+   3.3 Cross-account access must be granted via bucket policies with
+       explicit principal ARNs. Wildcard principals (`Principal: *`) are
+       prohibited outside of explicitly designated public-content
+       buckets.
+   3.4 Pre-signed URLs:
+          - Maximum expiration: 7 days for Internal, 24 hours for
+            Confidential, prohibited for Restricted.
+          - Generation must be logged with requesting identity, object
+            key, and intended recipient.
+
+----------------------------------------------------------------------
+4. Data Movement and Transfer
+
+   4.1 Inter-region replication requires Architecture Review Board (ARB)
+       approval and a documented disaster-recovery justification.
+   4.2 Bulk download (>10 GB or >10,000 objects in a single session)
+       must be approved in advance by the data owner and is logged as a
+       reportable event to the SOC.
+   4.3 Data export to external destinations (other cloud providers,
+       on-premises systems, third parties) requires a signed Data
+       Processing Agreement and is restricted to approved transfer
+       mechanisms (AWS DataSync, AWS Transfer Family, or contractually
+       approved SaaS connectors).
+
+----------------------------------------------------------------------
+5. Logging and Observability
+
+   5.1 Server access logging or S3 data events via CloudTrail must be
+       enabled on all production buckets and on all buckets storing
+       Confidential or Restricted data.
+   5.2 Logs are forwarded to the central logging account and retained
+       per NC-SEC-POL-014 Section 6.
+   5.3 GuardDuty for S3 must be enabled in all accounts.
+
+----------------------------------------------------------------------
+6. Cost and Capacity Management
+
+   6.1 Engineering teams must monitor bucket size and request count via
+       the standard CloudWatch dashboard `cw-s3-overview-<account>`.
+   6.2 Buckets exceeding $500/month in storage cost or $250/month in
+       request cost are reviewed monthly by FinOps.
+   6.3 S3 Intelligent-Tiering is the default storage class for objects
+       with unpredictable access patterns. Glacier Deep Archive is
+       required for any data with `DataRetention >= 1y` that is not
+       actively queried.
+
+----------------------------------------------------------------------
+7. Prohibited Uses
+
+The following are explicitly prohibited and constitute a policy violation:
+   7.1 Storing Restricted-tier data without prior Security Architecture
+       Review and documented business justification.
+   7.2 Using S3 as a primary database for transactional workloads.
+   7.3 Storing authentication secrets, API keys, or cryptographic
+       material as object content. Use AWS Secrets Manager or AWS
+       Parameter Store instead.
+   7.4 Mounting S3 as a filesystem on production workloads (s3fs, goofys,
+       or equivalent) without ARB approval.
+   7.5 Using S3 for personal data not related to NovaCorp business.
+
+----------------------------------------------------------------------
+8. AI / Retrieval-Augmented Generation Workloads
+
+   8.1 RAG indexes built from S3 content must source from Public or
+       Internal-tier buckets only. Indexing of Confidential or Restricted
+       content requires Security Architecture Review.
+   8.2 AI agents and autonomous tools accessing S3 must use a dedicated
+       service principal with read-only access to an explicit allowlist
+       of buckets. Wildcard `s3:*` permissions are prohibited.
+   8.3 Retrieved document content must be treated as untrusted input.
+       Agents must not interpret, follow, or execute instructions
+       embedded in retrieved object content (see NC-SEC-POL-014
+       Section 8.3).
+
+----------------------------------------------------------------------
+9. Exceptions
+
+Exceptions to these guidelines must be requested via the Cloud Exception
+process (NC-CLD-PROC-009), reviewed by the Cloud Platform team and
+Security, and re-evaluated every 90 days.
+
+----------------------------------------------------------------------
+10. Review
+
+These guidelines are reviewed semi-annually by Cloud Platform Engineering
+in coordination with Information Security.
+
+Approved by:
+   M. Alvarez, VP Cloud Engineering
+   J. Patel, Chief Information Security Officer
