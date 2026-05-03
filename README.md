@@ -295,6 +295,6 @@ If you no longer need the IAM user, deactivate and delete its access key in the 
 
 ## Acknowledgements
 
-- Course: **CSC 479 — Applied / Adversarial AI**
+- Course: **CSC 479 — Applied AI**
 - Models: Qwen 2.5 (Alibaba), all-MiniLM-L6-v2 + ms-marco-MiniLM-L6-v2 (Sentence-Transformers / cross-encoder)
 - Inspired by published research on indirect prompt injection in RAG systems and agentic LLM tool-use vulnerabilities.
