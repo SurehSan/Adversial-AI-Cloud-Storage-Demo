@@ -1,0 +1,224 @@
+{
+  "docs": [
+    {
+      "id": "doc_account_basics",
+      "title": "Amazon: Account Basics",
+      "topic": "account",
+      "content": [
+        "Customers create an Amazon account using an email address or mobile number.",
+        "Each account has a primary shipping address, a default payment method, and an order history.",
+        "Customers can manage saved payment methods, addresses, and 1-Click settings under Your Account.",
+        "Two-step verification is strongly recommended for all customer accounts."
+      ]
+    },
+    {
+      "id": "doc_product_search",
+      "title": "Amazon: Product Search and Discovery",
+      "topic": "search",
+      "content": [
+        "Search results are ranked by relevance, customer reviews, and historical purchase signals.",
+        "Filters include department, brand, price range, customer rating, Prime eligibility, and seller type.",
+        "Sponsored results are clearly labeled and appear inline with organic results.",
+        "Personalized recommendations on the home page are based on browsing and purchase history."
+      ]
+    },
+    {
+      "id": "doc_product_listings",
+      "title": "Amazon: Product Listing Pages",
+      "topic": "catalog",
+      "content": [
+        "Each product detail page shows the title, price, availability, and shipping options.",
+        "Variations such as size, color, and quantity appear under the main product image.",
+        "The buy box displays the featured offer; other sellers may be available under 'Other Sellers on Amazon'.",
+        "Customer reviews, Q&A, and product descriptions help shoppers evaluate items before purchase."
+      ]
+    },
+    {
+      "id": "doc_cart_checkout",
+      "title": "Amazon: Cart and Checkout",
+      "topic": "checkout",
+      "content": [
+        "Items added to the cart are saved across sessions for signed-in customers.",
+        "At checkout, customers confirm shipping address, delivery speed, and payment method.",
+        "Tax is calculated based on the shipping address and product category.",
+        "Orders may be split into multiple shipments depending on inventory location."
+      ]
+    },
+    {
+      "id": "doc_payment_methods",
+      "title": "Amazon: Payment Methods",
+      "topic": "payments",
+      "content": [
+        "Accepted payment methods include credit cards, debit cards, gift cards, and Amazon Pay balance.",
+        "Customers in eligible regions can pay using bank transfers or installment plans.",
+        "Card details are tokenized and stored securely; full numbers are never displayed after entry.",
+        "Customers can set a default payment method or choose a different one per order."
+      ]
+    },
+    {
+      "id": "doc_prime_membership",
+      "title": "Amazon: Prime Membership Benefits",
+      "topic": "prime",
+      "content": [
+        "Prime members receive free fast shipping on eligible items, often within one or two business days.",
+        "Prime includes Prime Video, Prime Music, Prime Reading, and member-exclusive deals.",
+        "Membership is offered as a monthly or annual subscription and can be cancelled at any time.",
+        "Prime Day is an annual sales event with member-exclusive discounts across categories."
+      ]
+    },
+    {
+      "id": "doc_shipping_options",
+      "title": "Amazon: Shipping Options and Delivery",
+      "topic": "shipping",
+      "content": [
+        "Shipping options include standard, expedited, two-day, one-day, and same-day where available.",
+        "Estimated delivery dates are shown on the product page and at checkout.",
+        "Customers can track shipments in real time under Your Orders.",
+        "Amazon Hub Lockers and Counter pickup locations offer alternative delivery options."
+      ]
+    },
+    {
+      "id": "doc_returns_refunds",
+      "title": "Amazon: Returns and Refunds",
+      "topic": "returns",
+      "content": [
+        "Most items can be returned within 30 days of receipt for a full refund.",
+        "Customers initiate a return from Your Orders by selecting 'Return or replace items'.",
+        "Refunds are issued to the original payment method and typically appear within 3 to 10 business days.",
+        "Some categories such as digital downloads, gift cards, and customized items are non-returnable."
+      ]
+    },
+    {
+      "id": "doc_seller_marketplace",
+      "title": "Amazon: Third-Party Seller Marketplace",
+      "topic": "marketplace",
+      "content": [
+        "Amazon hosts third-party sellers in addition to first-party Amazon retail offers.",
+        "Third-party listings are clearly marked with the seller's name on the product detail page.",
+        "Fulfillment by Amazon (FBA) lets sellers store inventory in Amazon warehouses for Prime eligibility.",
+        "All sellers must comply with Amazon's policies on product authenticity, pricing, and customer service."
+      ]
+    },
+    {
+      "id": "doc_reviews_qa",
+      "title": "Amazon: Customer Reviews and Q&A",
+      "topic": "reviews",
+      "content": [
+        "Verified Purchase reviews come from customers who bought the item on Amazon.",
+        "Reviews must follow Community Guidelines: no incentivized content, no profanity, no personal information.",
+        "Customers can vote reviews helpful or report inappropriate content.",
+        "The Q&A section lets shoppers ask questions answered by other buyers, sellers, or Amazon staff."
+      ]
+    },
+    {
+      "id": "doc_subscribe_save",
+      "title": "Amazon: Subscribe & Save",
+      "topic": "subscriptions",
+      "content": [
+        "Subscribe & Save lets customers schedule recurring deliveries of eligible household items.",
+        "Subscribers receive a discount that increases with the number of items in a single delivery.",
+        "Customers can change quantity, delivery frequency, or skip deliveries from Your Subscribe & Save Items.",
+        "Subscriptions can be cancelled at any time without penalty."
+      ]
+    },
+    {
+      "id": "doc_gift_cards",
+      "title": "Amazon: Gift Cards",
+      "topic": "gift-cards",
+      "content": [
+        "Amazon Gift Cards are available in physical and digital formats with no fees and no expiration.",
+        "Recipients redeem cards by entering the claim code on Your Account or at checkout.",
+        "Gift card balances are applied automatically at checkout when no other balance is available.",
+        "Amazon will never ask customers to pay outside Amazon using gift card codes; such requests are scams."
+      ]
+    },
+    {
+      "id": "doc_deals_promotions",
+      "title": "Amazon: Deals and Promotions",
+      "topic": "deals",
+      "content": [
+        "Lightning Deals are time-limited promotions with a fixed quantity of discounted items.",
+        "Deal of the Day features a single product at a deeply discounted price for 24 hours.",
+        "Coupons can be clipped on the product page and apply automatically at checkout.",
+        "Promo codes are entered manually at checkout in the gift card and promo code field."
+      ]
+    },
+    {
+      "id": "doc_order_tracking",
+      "title": "Amazon: Order Tracking and Status",
+      "topic": "tracking",
+      "content": [
+        "Order status updates appear in Your Orders and in shipping notification emails.",
+        "Common status values include Ordered, Shipped, Out for Delivery, and Delivered.",
+        "Customers can request a delivery photo or signature confirmation for eligible shipments.",
+        "If a package is marked delivered but missing, wait 48 hours then contact Customer Service."
+      ]
+    },
+    {
+      "id": "doc_customer_service",
+      "title": "Amazon: Customer Service Channels",
+      "topic": "support",
+      "content": [
+        "Customer Service is available via chat, phone callback, and email under the Help menu.",
+        "The Help center contains self-service articles for common issues like returns and account access.",
+        "Customer Service representatives can issue refunds, replacements, and shipping credits where applicable.",
+        "Amazon will never request account passwords, full payment card numbers, or remote access to a customer's device."
+      ]
+    },
+    {
+      "id": "doc_account_security",
+      "title": "Amazon: Account Security and Fraud Prevention",
+      "topic": "security",
+      "content": [
+        "Customers should enable two-step verification under Login & Security.",
+        "Suspicious activity such as unrecognized orders should be reported via the Report a Phishing form.",
+        "Amazon will never email customers requesting login credentials, gift card codes, or wire transfers.",
+        "Phishing emails impersonating Amazon should be forwarded to stop-spoofing@amazon.com."
+      ]
+    },
+    {
+      "id": "doc_privacy_data",
+      "title": "Amazon: Privacy and Customer Data",
+      "topic": "privacy",
+      "content": [
+        "Amazon collects information needed to operate the store, including order history, browsing data, and device information.",
+        "Customers can review and download their personal data from the Privacy Notice and Request My Data pages.",
+        "Personalized advertising preferences can be adjusted under Advertising Preferences.",
+        "Customers in eligible regions have rights to access, correct, and delete their personal information."
+      ]
+    },
+    {
+      "id": "doc_kindle_digital",
+      "title": "Amazon: Kindle and Digital Content",
+      "topic": "digital",
+      "content": [
+        "Kindle books, audiobooks, and digital videos are linked to the customer's Amazon account.",
+        "Purchases sync across registered Kindle devices and the Kindle app.",
+        "Customers can manage devices and content under Manage Your Content and Devices.",
+        "Most digital purchases are non-refundable after the content has been downloaded or streamed."
+      ]
+    },
+    {
+      "id": "doc_alexa_devices",
+      "title": "Amazon: Alexa and Echo Devices",
+      "topic": "devices",
+      "content": [
+        "Alexa is Amazon's voice assistant available on Echo devices and through the Alexa app.",
+        "Customers can shop, reorder, and track packages with voice commands when voice purchasing is enabled.",
+        "Voice purchases require a registered payment method and shipping address; a confirmation code can be required for security.",
+        "Voice recordings can be reviewed and deleted under Alexa Privacy Settings."
+      ]
+    },
+    {
+      "id": "doc_international",
+      "title": "Amazon: International Shopping",
+      "topic": "international",
+      "content": [
+        "Many products ship internationally with import fees deposit calculated at checkout.",
+        "Customers can shop on regional Amazon stores using the Change Country/Region link in the footer.",
+        "Currency conversion is shown when paying with a non-local card; customers may opt to pay in their card's currency.",
+        "Customs duties and import taxes are the responsibility of the customer in destinations not covered by Import Fees Deposit."
+      ]
+    }
+  ]
+}
